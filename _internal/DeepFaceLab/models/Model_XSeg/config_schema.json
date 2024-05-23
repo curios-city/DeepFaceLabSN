@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/dfl_config",
+  "definitions": {
+    "dfl_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "use_fp16": {
+          "type": "boolean"
+        },
+        "face_type": {
+          "type": "string",
+          "enum": [
+            "h",
+            "mf",
+            "f",
+            "wf",
+            "head",
+            "custom"
+          ]
+        },
+        "pretrain": {
+          "type": "boolean"
+        },
+        "batch_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "src_pak_name": {
+          "type": "string"
+        },
+        "dst_pak_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "batch_size",
+        "face_type",
+        "pretrain"
+      ],
+      "title": "dfl_config"
+    }
+  }
+}

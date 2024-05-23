@@ -1,0 +1,58 @@
+basic_param:
+  resolution: 128
+  ae_dims: 256
+  inter_dims: 1024
+  e_dims: 64
+  d_dims: 64
+  d_mask_dims: 22
+  face_type: wf
+model_properties:
+  morph_factor: 0.5
+  preview_mf: 1
+  autobackup_hour: 0
+  maximum_n_backups: 24
+  write_preview_history: false
+  use_fp16: false
+  target_iter: 0
+  batch_size: 8
+  models_opt_on_gpu: true
+  masked_training: true
+  eyes_prio: false
+  mouth_prio: false
+  uniform_yaw: false
+  blur_out_mask: false
+  adabelief: true
+  lr_dropout: n
+  loss_function: SSIM
+  lr: 5e-5
+  clipgrad: false
+  retraining_samples: false
+  background_power: 0.0
+  face_style_power: 0.0
+  bg_style_power: 0.0
+  cpu_cap: 8
+  preview_samples: 4
+  force_full_preview: false
+  gan properties:
+    gan_version: 2
+    gan_power: 0.0
+    gan_patch_size: 16
+    gan_dims: 16
+    gan_smoothing: 0.1
+    gan_noise: 0.0
+augmentations:
+  random_warp: true
+  random_src_flip: false
+  random_dst_flip: true
+  random_downsample: false
+  random_noise: false
+  random_blur: false
+  random_jpeg: false
+  random_jpeg: false
+color_augs:
+  random_hsv_power: 0.0
+  ct_mode: none
+  random_color: false
+dataset_param:
+  src_pak_name: faceset
+  dst_pak_name: faceset

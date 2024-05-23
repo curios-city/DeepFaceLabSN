@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/dfl_config",
+  "definitions": {
+    "dfl_config": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "use_fp16": {
+          "type": "boolean"
+        },
+        "cpu_cap": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "morph_factor": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.5
+        },
+        "preview_mf": {
+          "type": "number",
+          "enum": [
+            0.25,
+            0.50,
+            0.65,
+            0.75,
+            1
+          ]
+        },
+        "resolution": {
+          "type": "integer",
+          "minimum": 64,
+          "maximum": 640,
+          "multipleOf": 16
+        },
+        "face_type": {
+          "type": "string",
+          "enum": [
+            "h",
+            "mf",
+            "f",
+            "wf",
+            "head",
+            "custom"
+          ]
+        },
+        "models_opt_on_gpu": {
+          "type": "boolean"
+        },
+        "ae_dims": {
+          "type": "integer",
+          "minimum": 32,
+          "maximum": 1024
+        },
+        "e_dims": {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 256,
+          "multipleOf": 2
+        },
+        "inter_dims": {
+          "type": "integer",
+          "minimum": 32,
+          "maximum": 2048,
+          "multipleOf": 2
+        },
+        "d_dims": {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 256,
+          "multipleOf": 2
+        },
+        "d_mask_dims": {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 256,
+          "multipleOf": 2
+        },
+        "masked_training": {
+          "type": "boolean"
+        },
+        "eyes_prio": {
+          "type": "boolean"
+        },
+        "mouth_prio": {
+          "type": "boolean"
+        },
+        "uniform_yaw": {
+          "type": "boolean"
+        },
+        "blur_out_mask": {
+          "type": "boolean"
+        },
+        "adabelief": {
+          "type": "boolean"
+        },
+        "lr_dropout": {
+          "type": "string",
+          "enum": [
+            "y",
+            "n",
+            "cpu"
+          ]
+        },
+        "loss_function": {
+          "type": "string",
+          "enum": [
+            "SSIM",
+            "MS-SSIM",
+            "MS-SSIM+L1"
+          ]
+        },
+        "lr": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.0
+        },
+        "random_warp": {
+          "type": "boolean"
+        },
+        "random_downsample": {
+          "type": "boolean"
+        },
+        "random_noise": {
+          "type": "boolean"
+        },
+        "random_blur": {
+          "type": "boolean"
+        },
+        "random_jpeg": {
+          "type": "boolean"
+        },
+        "random_hsv_power": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.3
+        },
+        "background_power": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "ct_mode": {
+          "type": "string",
+          "enum": [
+            "none",
+            "rct",
+            "lct",
+            "mkl",
+            "idt",
+            "sot",
+            "fs-aug",
+            "cc-aug"
+          ]
+        },
+        "random_color": {
+          "type": "boolean"
+        },
+        "clipgrad": {
+          "type": "boolean"
+        },
+        "pretrain": {
+          "type": "boolean"
+        },
+        "autobackup_hour": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 24
+        },
+        "maximum_n_backups": {
+          "type": "integer"
+        },
+        "write_preview_history": {
+          "type": "boolean"
+        },
+        "target_iter": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retraining_samples": {
+          "type": "boolean"
+        },
+        "random_src_flip": {
+          "type": "boolean"
+        },
+        "random_dst_flip": {
+          "type": "boolean"
+        },
+        "preview_samples": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "force_full_preview": {
+          "type": "boolean"
+        },
+        "batch_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "gan_power": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 5.0
+        },
+        "gan_patch_size": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 640
+        },
+        "gan_dims": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 512
+        },
+        "gan_smoothing": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.5
+        },
+        "gan_noise": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.5
+        },
+        "src_pak_name": {
+          "type": "string"
+        },
+        "dst_pak_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cpu_cap",
+        "adabelief",
+        "ae_dims",
+        "autobackup_hour",
+        "background_power",
+        "batch_size",
+        "blur_out_mask",
+        "clipgrad",
+        "ct_mode",
+        "d_dims",
+        "d_mask_dims",
+        "e_dims",
+        "inter_dims",
+        "morph_factor",
+        "eyes_prio",
+        "face_type",
+        "gan_dims",
+        "gan_noise",
+        "gan_patch_size",
+        "gan_power",
+        "gan_smoothing",
+        "loss_function",
+        "lr_dropout",
+        "masked_training",
+        "maximum_n_backups",
+        "models_opt_on_gpu",
+        "mouth_prio",
+        "random_blur",
+        "random_color",
+        "random_hsv_power",
+        "random_downsample",
+        "random_dst_flip",
+        "random_jpeg",
+        "random_noise",
+        "random_src_flip",
+        "random_warp",
+        "resolution",
+        "retraining_samples",
+        "target_iter",
+        "uniform_yaw",
+        "use_fp16",
+        "write_preview_history"
+      ],
+      "title": "dfl_config"
+    }
+  }
+}

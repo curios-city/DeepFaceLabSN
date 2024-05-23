@@ -1,0 +1,12 @@
+_internal/_e/
+_internal/CUDA/
+_internal/CUDNN/
+_internal/doc/
+_internal/EbSynth/
+_internal/ffmpeg/
+_internal/model_generic_xseg/
+_internal/pretrain_Quick224/
+_internal/pretrain_Quick512/
+_internal/python_common/
+_internal/XnViewMP/
+*.npy

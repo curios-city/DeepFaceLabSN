@@ -1,0 +1,67 @@
+#模型架构（不可改）__________
+basic_param:
+  archi: liae-ud
+  resolution: 192
+  ae_dims: 192
+  e_dims: 64
+  d_dims: 64
+  d_mask_dims: 22
+  face_type: wf
+  adabelief: true
+  
+#本机设置_____________________
+local_properties:
+  autobackup_hour: 0
+  maximum_n_backups: 5
+  write_preview_history: false
+  models_opt_on_gpu: true
+  use_fp16: false
+  
+#训练属性_____________________
+model_properties:
+  target_iter: 0
+  batch_size: 8
+  retraining_samples: false
+  pretrain: false
+  masked_training: true
+  eyes_prio: false
+  mouth_prio: false
+  uniform_yaw: false
+  blur_out_mask: false
+  lr_dropout: n
+  loss_function: SSIM
+  lr: 5e-5
+  clipgrad: false
+  background_power: 0.0
+  true_face_power: 0.0
+  face_style_power: 0.0
+  bg_style_power: 0.0
+  cpu_cap: 8
+  preview_samples: 4
+  force_full_preview: false
+  
+#随机扭曲增强_________________
+random_augs:
+  random_warp: true
+  random_src_flip: false
+  random_dst_flip: true
+  random_downsample: false
+  random_noise: false
+  random_blur: false
+  random_jpeg: false
+  super_warp: false
+  
+#颜色增强_____________________
+color_augs:
+  random_hsv_power: 0.0
+  ct_mode: none
+  random_color: false
+  
+#GAN参数______________________
+gan_properties:
+  gan_version: 2
+  gan_power: 0.0
+  gan_patch_size: 16
+  gan_dims: 16
+  gan_smoothing: 0.1
+  gan_noise: 0.0

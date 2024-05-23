@@ -1,0 +1,8 @@
+basic_param:
+  face_type: wf
+  use_fp16: false
+  pretrain: false
+  batch_size: 8
+dataset_param:
+  src_pak_name: faceset
+  dst_pak_name: faceset
