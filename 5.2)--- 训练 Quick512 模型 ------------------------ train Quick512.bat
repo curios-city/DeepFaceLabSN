@@ -12,8 +12,11 @@ if not "%filename:~0,2%"=="0-" (
 )
 
 echo.
-echo 温馨提示：本模型需要24G显存确保完整运行！如果是12G显卡可以尝试。
+
+echo 温馨提示：本模型需要24G显存确保完整运行！如果是12G显卡可以尝试
+
 echo 显存8G 可以尝试开启RG优化（牺牲速度 降低显存要求）
+
 echo.
 
 call _internal\setenv.bat
@@ -24,7 +27,8 @@ call _internal\setenv.bat
     --pretraining-data-dir "%WORKSPACE%\pretrain_faces" ^
     --pretrained-model-dir "%INTERNAL%\pretrain_Quick512" ^
     --model-dir "%WORKSPACE%\model" ^
-    --model Q512
+    --model Q512 ^
+    --flask-preview
 
 :end
 echo 如果有问题请在 QQ群:747439134 反馈

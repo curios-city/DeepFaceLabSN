@@ -132,7 +132,10 @@ class MEModel(ModelBase):
         e_dims = 64  # 设置e维度为64
         d_dims = 64  # 设置d维度为64
         d_mask_dims = 22  # 设置d_mask维度为16
-
+        if self.quick_opt:
+            io.log_info("当前训练眼嘴")
+        else:
+            io.log_info("当前训练皮肤")
         # 设置眼睛和嘴巴优先级
         eyes_prio = True if self.quick_opt else False
         mouth_prio = True if self.quick_opt else False
@@ -303,9 +306,9 @@ class MEModel(ModelBase):
             if self.is_training:
                 if gan_power != 0:
                     self.D_src = nn.UNetPatchDiscriminator(
-                        patch_size=self.options["gan_patch_size"],
+                        patch_size=64,
                         in_ch=input_ch,
-                        base_ch=self.options["gan_dims"],
+                        base_ch=16,
                         use_fp16=False,
                         name="D_src",
                     )
@@ -737,8 +740,8 @@ class MEModel(ModelBase):
                             )
                             return x
 
-                        smoothing = self.options["gan_smoothing"]
-                        noise = self.options["gan_noise"]
+                        smoothing = 0.1
+                        noise = 0.0
 
                         gpu_pred_src_src_d_ones = tf.ones_like(gpu_pred_src_src_d)
                         gpu_pred_src_src_d2_ones = tf.ones_like(gpu_pred_src_src_d2)
