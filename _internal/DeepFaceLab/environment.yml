@@ -1,0 +1,30 @@
+name: deepfacelab
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=11.3.1
+  - cudnn=8.2.1
+  - python=3.7
+  - pip
+  - pip:
+    - tqdm
+    - numpy==1.19.3
+    - numexpr
+    - h5py==3.1.0
+    - opencv-python==4.1.0.25
+    - ffmpeg-python==0.1.17
+    - scikit-image==0.14.2
+    - scipy==1.4.1
+    - colorama
+    - tensorflow
+    - pyqt5
+    - tf2onnx==1.9.3
+    - Flask==1.1.1
+    - flask-socketio==4.2.1
+    - tensorboardX
+    - crc32c
+    - jsonschema
+    - Jinja2==3.0.3
+    - werkzeug==2.0.2
+    - itsdangerous==2.0.1

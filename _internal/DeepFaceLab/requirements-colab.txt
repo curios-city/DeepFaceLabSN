@@ -1,0 +1,15 @@
+tqdm
+#numpy==1.19.3
+numexpr
+#h5py==2.10.0
+#opencv-python==4.3.0.38
+ffmpeg-python==0.1.17
+#scikit-image==0.14.2
+#scipy==1.4.1
+colorama
+tensorflow
+tf2onnx==1.9.3
+tensorboardX
+crc32c
+jsonschema
+PyYAML==6.0
