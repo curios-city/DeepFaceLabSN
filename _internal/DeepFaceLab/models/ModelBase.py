@@ -1372,45 +1372,49 @@ class ModelBase(object):
             # 计算最大的损失值，用于归一化
             plist_abs_max = np.mean(loss_history[len(loss_history) // 5 :]) * 2
 
-            # 遍历每一列
+            # 遍历每一列（w表示列数）
             for col in range(0, w):
-                # 遍历每一个损失函数
+                # 遍历每一个损失函数 (loss_count为损失函数的数量)
                 for p in range(0, loss_count):
                     # 设置数据点的颜色，根据HSV颜色空间生成
                     point_color = [1.0] * 3
-                    # loss_count=2 , p=0 or 1
-                    #point_color[0:3] = colorsys.hsv_to_rgb(p * (1.0 / loss_count), 1.0, 0.8)
-                    point_color_src=(0.0, 0.8, 0.9)
-                    point_color_dst=(0.8, 0.3, 0.0)
-                    point_color_mix=(0.1, 0.8, 0.0)
+                    # point_color_src = (0.0, 0.8, 0.9)
+                    point_color_dst = (0.8, 0.3, 0.0)
+                    point_color_mix = (0.1, 0.8, 0.0)
                     # 根据实验，应该是BGR的顺序
-                    if p==0:
-                        point_color=point_color_dst
-                    if p==1:
-                        point_color=point_color_src
+                    if p == 0:
+                        point_color = point_color_dst
+                    if p == 1:
+                        point_color = point_color_src
+
+                    # 检查plist_max[col][p] 和 plist_abs_max 是否为 NaN 或零
+                    if np.isnan(plist_max[col][p]) or np.isnan(plist_abs_max) or plist_abs_max == 0:
+                        # 如果是 NaN 或零，将它们设为1
+                        plist_max[col][p] = 1.0
+                        plist_abs_max = 1.0  # 避免除零错误
+
                     # 计算数据点在图像中的位置（最大值和最小值）
                     ph_max = int((plist_max[col][p] / plist_abs_max) * (lh_height - 1))
                     ph_max = np.clip(ph_max, 0, lh_height - 1)
+
                     ph_min = int((plist_min[col][p] / plist_abs_max) * (lh_height - 1))
-                    ph_min = np.clip(ph_min, 0, lh_height-1)  # 将最小值限制在图像高度范围内
+                    ph_min = np.clip(ph_min, 0, lh_height - 1)  # 将最小值限制在图像高度范围内
 
                     # 遍历从最小值到最大值的范围
-                    for ph in range(ph_min, ph_max+1):
+                    for ph in range(ph_min, ph_max + 1):
                         # 在图像数组中根据计算得到的位置和颜色添加标记点
                         # 注意：由于数组的原点通常位于左上角，所以需要使用(lh_height-ph-1)来将y坐标转换为数组索引
-                        if p==0:
-                            lh_img[(lh_height-ph-1), col] = point_color
-                        if p==1:
-                            current_point_color = lh_img[(lh_height-ph-1), col]
+                        if p == 0:
+                            lh_img[(lh_height - ph - 1), col] = point_color
+                        if p == 1:
+                            current_point_color = lh_img[(lh_height - ph - 1), col]
                             # 叠加新的颜色到当前颜色
-                            #final_color = [min(1.0, current_point_color[i] + point_color_src[i]) for i in range(3)]
-                            #lh_img[(lh_height-ph-1), col] = final_color
                             if (current_point_color == point_color_dst).all():
-                                lh_img[(lh_height-ph-1), col] = point_color_mix
+                                lh_img[(lh_height - ph - 1), col] = point_color_mix
                             else:
-                                lh_img[(lh_height-ph-1), col] = point_color_src
-                                
+                                lh_img[(lh_height - ph - 1), col] = point_color_src
 
+                                
         lh_lines = 8
         # 计算每行的高度
         lh_line_height = (lh_height-1)/lh_lines
