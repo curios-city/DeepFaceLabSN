@@ -1378,7 +1378,7 @@ class ModelBase(object):
                 for p in range(0, loss_count):
                     # 设置数据点的颜色，根据HSV颜色空间生成
                     point_color = [1.0] * 3
-                    # point_color_src = (0.0, 0.8, 0.9)
+                    point_color_src = (0.0, 0.8, 0.9)
                     point_color_dst = (0.8, 0.3, 0.0)
                     point_color_mix = (0.1, 0.8, 0.0)
                     # 根据实验，应该是BGR的顺序
